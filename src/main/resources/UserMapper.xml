@@ -8,4 +8,12 @@
 		select * from user where id = #{id}
 	</select>
 
+    <insert id="insertUser" parameterType="com.hsf.mybatistest.User">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into user(username,birthday,sex,address)
+        values(#{username},#{birthday},#{sex},#{address})
+    </insert>
+
 </mapper>
